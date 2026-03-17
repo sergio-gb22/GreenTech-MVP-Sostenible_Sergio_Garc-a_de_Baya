@@ -8,11 +8,8 @@
         :root {
             --primary-green: #2ecc71;
             --dark-green: #27ae60;
-            --forest-green: #1e7e34;
             --text-light: #ffffff;
-            --text-dark: #2c3e50;
             --shadow-sm: 0 4px 15px rgba(46, 204, 113, 0.3);
-            --transition-base: all 0.3s ease;
         }
         * {
             margin: 0;
@@ -20,8 +17,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 
-                         'Helvetica Neue', sans-serif;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background-color: #f4fdf4;
             line-height: 1.6;
             min-height: 100vh;
@@ -39,17 +35,11 @@
             min-height: 100vh;
             color: var(--text-light);
             position: relative;
+            background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
             background-color: #1a3a1a;
-        }
-        .hero-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            filter: brightness(0.7);
+            background-blend-mode: overlay;
         }
         .hero-title {
             font-size: clamp(2.5rem, 8vw, 5rem);
@@ -77,7 +67,7 @@
             border-radius: 50px;
             cursor: pointer;
             box-shadow: var(--shadow-sm);
-            transition: var(--transition-base);
+            transition: all 0.3s ease;
             text-decoration: none;
             border: 2px solid transparent;
         }
@@ -85,13 +75,6 @@
             background-color: var(--dark-green);
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
-        }
-        .btn-eco:active {
-            transform: scale(0.98);
-        }
-        .btn-eco:focus-visible {
-            outline: 3px solid var(--dark-green);
-            outline-offset: 2px;
         }
         .icon-leaf {
             width: 1.2em;
@@ -106,9 +89,6 @@
             width: 100%;
             font-size: 0.95rem;
             border-top: 3px solid var(--primary-green);
-        }
-        .site-footer p {
-            opacity: 0.9;
         }
         .eco-badge {
             display: inline-block;
@@ -127,31 +107,12 @@
                 transform: none;
             }
         }
-        @media (prefers-contrast: high) {
-            .btn-eco {
-                border: 2px solid white;
-            }
-            .hero-title, .hero-subtitle {
-                text-shadow: 3px 3px 0 black;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="hero">
-        <img class="hero-image"
-             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%231a3a1a'/%3E%3Ctext x='50%25' y='50%25' font-size='48' text-anchor='middle' fill='%23ffffff' font-family='system-ui'%3ECargando...%3C/text%3E%3C/svg%3E"
-             data-src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&auto=format&fit=crop&q=80"
-             data-srcset="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=480&auto=format&fit=crop&q=80 480w,
-                          https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1024&auto=format&fit=crop&q=80 1024w,
-                          https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&auto=format&fit=crop&q=80 1920w"
-             sizes="(max-width: 480px) 480px, (max-width: 1024px) 1024px, 1920px"
-             alt="Bosque verde y sostenible - Paisaje natural"
-             loading="lazy"
-             decoding="async">
         <h1 class="hero-title">🌍 Salvemos el Planeta</h1>
-        <p class="hero-subtitle">Únete a la revolución verde de GreenTech. 
-           Por un futuro digital sostenible.</p>    
+        <p class="hero-subtitle">Únete a la revolución verde de GreenTech. Por un futuro digital sostenible.</p>   
         <button class="btn-eco" aria-label="Quiero ayudar - Únete a la causa">
             <svg class="icon-leaf" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12,2C9,7 4,9 4,14C4,18 8,22 12,22C16,22 20,18 20,14C20,9 15,7 12,2Z"/>
@@ -160,45 +121,13 @@
         </button>
     </div>
     <footer class="site-footer">
-        <p>GreenTech Solutions © 2025 - Tecnología responsable con el planeta</p>
+        <p>GreenTech Solutions © 2026 - Tecnología responsable con el planeta</p>
         <p class="eco-badge">
             ⚡ Web Sostenible · 97% más ligera · Certificada WSG 1.0
         </p>
         <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">
-            Esta web está optimizada para consumir menos energía y alargar 
-            la vida útil de tu dispositivo.
+            Esta web está optimizada para consumir menos energía y alargar la vida útil de tu dispositivo.
         </p>
     </footer>
-    <script>
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.srcset = img.dataset.srcset;
-                        img.classList.add('loaded');
-                        observer.unobserve(img);
-                    }
-                });
-            });                                         
-            const lazyImage = document.querySelector('.hero-image');
-            if (lazyImage) {
-                imageObserver.observe(lazyImage);
-            }
-        } else {
-            const lazyImage = document.querySelector('.hero-image');
-            if (lazyImage) {
-                lazyImage.src = lazyImage.dataset.src;
-                lazyImage.srcset = lazyImage.dataset.srcset;
-            }
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            const footer = document.querySelector('.site-footer p');
-            if (footer) {
-                footer.innerHTML = footer.innerHTML.replace('2025', new Date().getFullYear());
-            }
-        });
-    </script>
 </body>
 </html>
