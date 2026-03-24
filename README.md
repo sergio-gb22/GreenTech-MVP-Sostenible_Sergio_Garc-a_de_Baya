@@ -6,7 +6,7 @@ He quitado todo lo innecesario que se podia sustituir por cosas que pesan menos,
 
 ## Lo que he usado
 
-- **HTML semántico**: en vez de un <div> cualquiera he puesto <section> para la parte principal, y el <footer> va directo
+- **HTML semántico**: en vez de un '<div>' cualquiera he puesto <section> para la parte principal, y el <footer> va directo
 - **CSS nativo**: todo lo que antes hacía Bootstrap ahora lo hago yo con CSS
 - **Pseudoclases**: :hover y :active para el botón
 - **Gradiente**: puse un linear-gradient negro encima de la foto para que el texto se vea mejor
